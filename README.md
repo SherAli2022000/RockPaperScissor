@@ -24,7 +24,7 @@ The styling is embedded in the `index.html` file using `<style>` tags. It define
 
 ## Preview
 
-![Rock Paper Scissor Game](https://github.com/SherAli2022000/RockPaperScissor/blob/main/rock.png)
+![Rock Paper Scissor Game](https://github.com/SherAli2022000/RockPaperScissor/blob/main/preview.PNG)
 
 Feel free to contribute and improve the game!
 
