@@ -28,6 +28,3 @@ The styling is embedded in the `index.html` file using `<style>` tags. It define
 
 Feel free to contribute and improve the game!
 
-## License
-
-This project is licensed under the [Your License] - see the [LICENSE](LICENSE) file for details.
