@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Rock Paper Game</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+        * {
+            height: 100vh;
+            width: 100vw;
+            padding: 0;
+            margin: 0;
+            font-family: "Montserrat";
+            overflow: hidden;
+        }
+
+        .abc{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            height: 100vh;
+            width: 100vw;
+            background-color: #012622;
+        }
+
+        .mainTitle {
+            height: 20%;
+            width: 100%;
+            color: white;
+            padding: 1.5rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center; 
+            justify-content: center; 
+        }
+
+        .titleImage {
+            height: 4rem;
+            width: 4rem;
+            filter: invert();
+            background-color: transparent;
+            margin: 1rem;
+        }
+
+        .scoringCont {
+            height: 20%;
+            width: 100%;
+            background-color: #048c78;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .scoreLine {
+            color: white;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scoreHeading{
+            font-size: 2rem;
+            font-style: italic ;
+            font-weight: bold;
+        }
+
+        .scoreText { 
+            font-size: 1.5rem;
+            
+        }
+
+        .playerChoices{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 20px;
+
+        }
+
+        .roundButton {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color:#F6F6F6;
+            margin: 0 10px;
+            cursor: pointer;
+            background-repeat: no-repeat; 
+            background-size: contain;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0.5rem solid #048c78;
+        }
+
+        .roundButton:first-child{
+            background-image: url('rock.png');
+        }
+        .roundButton:nth-child(2){
+            background-image: url('paper.png');
+        }
+        .roundButton:nth-child(3){
+            background-image: url('scissor.png');
+        }
+
+        .roundButton:hover{
+            border: 0.5rem solid brown;
+        }
+
+
+        .selections{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 0.75rem;
+        }
+
+        .selectionIcon { 
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background-color:#F6F6F6;
+            margin: 0 10px;
+            background-repeat: no-repeat; 
+            background-size: contain;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0.5rem solid #048c78;
+        }
+
+        .seperator{
+            height: 10%;
+            width: 100%;
+            background-color: #048c78;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 0.75rem;
+        }
+
+    
+    </style>
+</head>
+<body>
+
+    <div class="abc">
+        <div class="mainTitle">
+            <img class="titleImage" src="rockPaperScissor.png">
+            Rock Paper Scissor
+            <img class="titleImage" src="rockPaperScissor.png">
+        </div>
+      
+
+        <div class="scoringCont">
+            <div class="scoreLine scoreText" id="playerVictories"> Player : 0 </div>
+            <div class="scoreLine scoreHeading">Score</div>
+            <div class="scoreLine scoreText" id="computerVictories">Computer : 0 </div>
+        </div>
+
+        <div class="selections">
+            <div class="selectionIcon" id="playerMove">Your Move</div>
+            <div class="selectionIcon" id="computerMove">Computer Move</div>
+        </div>
+        <div class="seperator" id="results">
+                Select Your Move
+        </div>
+        <div class="playerChoices">
+            <div class="roundButton" onclick="pickedNumber('rock')"></div>
+            <div class="roundButton" onclick="pickedNumber('paper')"></div>
+            <div class="roundButton" onclick="pickedNumber('scissor')"></div>
+        </div>
+        
+        
+
+        
+    </div>
+
+
+    <script>
+        let computerMove = "";
+        let playerVictories = 0;
+        let computerVictories=0;
+
+        function pickedNumber(choice) {
+            var playerMoveCircle = document.getElementById("playerMove");
+            
+            var computerMoveCircle = document.getElementById("computerMove");
+            
+            playerMoveCircle.innerHTML="";
+            computerMoveCircle.innerHTML="";
+            
+            playerMoveCircle.style.backgroundImage = `url('${choice}.png')`;            
+
+
+            const number = Math.random();
+
+            if (number >= 0 && number < 1 / 3) {
+                console.log("Computer picked rock");
+                computerMove = "rock";
+            } else if (number >= 1 / 3 && number < 2 / 3) {
+                console.log("Computer picked paper");
+                computerMove = "paper";
+            } else if (number >= 2 / 3 && number <= 1) {
+                console.log("Computer picked Scissor");
+                computerMove = "scissor";
+            }
+
+            computerMoveCircle.style.backgroundImage = `url('${computerMove}.png')`;   
+            
+            var result = document.getElementById("results");
+               
+            if ((computerMove==="rock" && choice==="rock") || (computerMove==="paper" && choice==="paper") || (computerMove==="scissor" && choice==="scissor")){
+                result.innerHTML="It is a Draw, select your move to play again.";
+
+            }
+            else if ((computerMove==="rock" && choice==="scissor") || (computerMove==="paper" && choice==="rock") || (computerMove==="scissor" && choice==="paper")){
+                result.innerHTML=`Computer won, ${computerMove} beats ${choice}`;
+                computerVictories+=1;
+                document.getElementById("computerVictories").innerHTML=("Computer : "+computerVictories);
+            }
+            else if ((choice==="rock" && computerMove==="scissor") || (choice==="paper" && computerMove==="rock") || (choice==="scissor" && computerMove==="paper")){
+                result.innerHTML=`You won, ${choice} beats ${choice}`;
+                playerVictories+=1;
+                document.getElementById("playerVictories").innerHTML=("Player : "+playerVictories);
+            }
+
+
+        }
+    </script>
+</body>
+</html>
