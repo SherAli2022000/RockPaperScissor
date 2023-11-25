@@ -2,6 +2,10 @@
 
 This is a simple Rock, Paper, Scissors game implemented in a single HTML file with embedded styling and JavaScript.
 
+
+## You can play the game by clicking on the following link:
+https://sherali2022000.github.io/RockPaperScissor/
+
 ## How to Play
 
 1. Open the `index.html` file in a web browser.
